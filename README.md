@@ -51,8 +51,8 @@ vercel --prod   # production
   `<div class="video" data-video-id="dQw4w9WgXcQ" ...>`. That's it; `main.js`
   swaps the "Trailer incoming" placeholder for a click-to-play thumbnail. The
   real embed only loads once someone clicks it, so the page stays fast.
-- **Steam link** — two `<a class="btn" ... data-steam>` tags currently point at
-  `#`. Replace both `href`s with the Steam app URL.
+- ~~**Steam link**~~ — done. Both `<a class="btn" ... data-steam>` tags point at
+  app `4950510`. The `data-steam` attribute is just a marker for finding them.
 - **Screenshots** — drop files into `images/screenshots/` and add one `<figure>`
   block per image in the screenshots section. Two are in so far; there's room
   for six. Write real alt text for each.
