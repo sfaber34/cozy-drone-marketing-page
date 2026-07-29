@@ -40,7 +40,7 @@
     <div class="wrap hero-inner">
       <img class="wordmark" src="/images/logo.png" alt="Cozy Drone" width="1280" height="115">
 
-      <p class="tagline">A cozy game about a precision instrument of aerial death.</p>
+      <p class="tagline">A cozy drone warfare simulator.</p>
 
       <p class="badge">Coming August 2026</p>
 
@@ -84,8 +84,8 @@
             use laser-guided missiles or high-explosive rounds to take them out.</p>
 
           <p><strong>Cozy Drone is a cozy game through and through.</strong> You can't crash. You can't
-            run out of ammo or fuel. You don't get penalized for hitting the wrong targets. You simply
-            cannot lose — it's just like all those cute cozy farming sims, except instead of harvesting
+            run out of ammo or fuel. You don't get penalized for hitting the wrong targets. It's just like all those
+            cute cozy farming sims, except instead of harvesting
             crops you're harvesting souls.</p>
         </div>
 
@@ -125,22 +125,68 @@
     </section>
 
     <!-- ══ SCREENSHOTS ══
-     To add one: drop the file in /images/screenshots/ and copy a <figure> block below.
-     Keep the alt text descriptive.
+     A scroll-snap carousel. To add one: drop a 16:9 file in /images/screenshots/
+     and copy a <figure class="slide"> block below — the dots and counter are
+     generated from however many slides exist. Keep the alt text descriptive.
+
+     Without JS this degrades to a horizontally scrollable strip, which still works.
 -->
     <section class="section" id="screenshots">
       <div class="wrap">
         <h2 class="h">Screenshots</h2>
 
-        <div class="shots">
-          <figure class="shot">
-            <img src="/images/screenshots/01.png"
-              alt="Open desert seen from altitude, scattered with rocks, shrubs and wandering chickens" loading="lazy">
-          </figure>
-          <figure class="shot">
-            <img src="/images/screenshots/02.png"
-              alt="A crowd gathered around a village soccer match, viewed through the drone camera" loading="lazy">
-          </figure>
+        <div class="gallery">
+          <div class="rail" tabindex="0" role="group" aria-label="Screenshots — use arrow keys to browse">
+
+            <figure class="slide">
+              <img src="/images/screenshots/01.png" width="2400" height="1350"
+                alt="The drone parked on a desert airstrip beside a hangar, with the mission briefing reading &quot;Time to hand out some freedom!&quot;">
+            </figure>
+            <figure class="slide">
+              <img src="/images/screenshots/02.png" width="2400" height="1350" loading="lazy"
+                alt="A fenced desert market compound full of stalls, crates and parked vehicles, seen from altitude">
+            </figure>
+            <figure class="slide">
+              <img src="/images/screenshots/03.png" width="2400" height="1350" loading="lazy"
+                alt="A dense grid of green irrigated fields and walled compounds, dotted with villagers and their chatter">
+            </figure>
+            <figure class="slide">
+              <img src="/images/screenshots/04.png" width="2400" height="1350" loading="lazy"
+                alt="A village soccer pitch ringed by a dense crowd of spectators, with the drone circling overhead">
+            </figure>
+            <figure class="slide">
+              <img src="/images/screenshots/05.png" width="2400" height="1350" loading="lazy"
+                alt="A crowd gathered around a truck in open desert, with the drone's laser designator line trained on it">
+            </figure>
+            <figure class="slide">
+              <img src="/images/screenshots/06.png" width="2400" height="1350" loading="lazy"
+                alt="An explosion blooming in the middle of a green farm compound laid out in neat walled plots">
+            </figure>
+            <figure class="slide">
+              <img src="/images/screenshots/07.png" width="2400" height="1350" loading="lazy"
+                alt="A red targeting reticle locked onto a walled corral surrounded by villagers">
+            </figure>
+            <figure class="slide">
+              <img src="/images/screenshots/08.png" width="2400" height="1350" loading="lazy"
+                alt="A strike going off among a crowd beside a small desert building, laser designator still lit">
+            </figure>
+            <figure class="slide">
+              <img src="/images/screenshots/09.png" width="2400" height="1350" loading="lazy"
+                alt="An explosion in a striped green crop field with farm workers scattering around it">
+            </figure>
+            <figure class="slide">
+              <img src="/images/screenshots/10.png" width="2400" height="1350" loading="lazy"
+                alt="Open desert scattered with chickens, a reticle and laser line converging on a target">
+            </figure>
+
+          </div>
+
+          <div class="rail-bar">
+            <button class="rail-nav" type="button" data-dir="-1" aria-label="Previous screenshot">◀</button>
+            <div class="rail-dots" role="tablist" aria-label="Choose a screenshot"></div>
+            <button class="rail-nav" type="button" data-dir="1" aria-label="Next screenshot">▶</button>
+            <span class="rail-count" aria-live="polite"></span>
+          </div>
         </div>
       </div>
     </section>

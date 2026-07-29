@@ -53,16 +53,22 @@ vercel --prod   # production
   real embed only loads once someone clicks it, so the page stays fast.
 - ~~**Steam link**~~ — done. Both `<a class="btn" ... data-steam>` tags point at
   app `4950510`. The `data-steam` attribute is just a marker for finding them.
-- **Screenshots** — drop files into `images/screenshots/` and add one `<figure>`
-  block per image in the screenshots section. Two are in so far; there's room
-  for six. Write real alt text for each.
+- ~~**Screenshots**~~ — 10 are in, all 2400×1350 (16:9). To add more, drop a
+  **16:9** file into `images/screenshots/` and copy a `<figure class="slide">`
+  block; the dots and counter are generated from however many slides exist.
+  Write real alt text for each.
 - **Domain** — the `og:image`, `og:url` and `canonical` tags hardcode
   `https://cozydrone.com`. Update those three if the domain differs, otherwise
   link previews on Discord/Twitter/Slack will break.
 
 ## Notes
 
-- Screenshots use `image-rendering: pixelated` so the pixel art stays crisp
-  instead of going blurry when scaled.
+- **Don't add `image-rendering: pixelated` to the screenshots.** It's only right
+  when scaling pixel art *up*. The sources are 2400px wide and display at about
+  1030 CSS px, so they always scale *down* — and nearest-neighbour downscaling
+  discards pixels instead of averaging them, which shreds the 1px villagers and
+  the HUD text. Smooth downsampling of a 2x source is what keeps them sharp.
+- The screenshot carousel is CSS scroll-snap; `main.js` only adds the dots,
+  counter and arrows. Without JS it stays a swipeable horizontal strip.
 - The palette (`#c6ac84` sand) is sampled directly from the game art.
 - Respects `prefers-reduced-motion` — the drifting planes in the hero turn off.

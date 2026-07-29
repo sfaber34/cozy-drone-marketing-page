@@ -194,7 +194,6 @@ a { color: var(--ink); }
   width: 100%; height: 100%;
   object-fit: cover;
   opacity: .35;
-  image-rendering: pixelated;
 }
 .video-soon p {
   position: relative;
@@ -226,26 +225,85 @@ a { color: var(--ink); }
 }
 .specs dd { flex: 1 1 260px; margin: 0; color: var(--ink-soft); }
 
-/* ── Screenshots ──────────────────────────── */
-.shots {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+/* ── Screenshots carousel ─────────────────── */
+.rail {
+  display: flex;
   gap: 20px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;          /* the dots are the affordance */
 }
-.shot { margin: 0; }
-.shot img {
+.rail::-webkit-scrollbar { display: none; }
+.rail:focus-visible { outline: 3px solid var(--grass); outline-offset: 6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rail { scroll-behavior: auto; }
+}
+
+.slide {
+  flex: 0 0 100%;
+  margin: 0;
+  scroll-snap-align: center;
+}
+.slide img {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  image-rendering: pixelated;
+  height: auto;                   /* files are all 16:9, so no crop */
   border: 3px solid var(--ink);
-  box-shadow: 5px 5px 0 rgba(0, 0, 0, .2);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, .22);
   cursor: zoom-in;
-  transition: transform .12s, box-shadow .12s;
 }
-.shot img:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 8px 8px 0 rgba(0, 0, 0, .25);
+/* No image-rendering: pixelated here on purpose. The sources are 2400px wide
+   and display at ~1030, so they always downscale — and nearest-neighbour
+   downscaling drops pixels rather than averaging them, which shreds the 1px
+   villagers and HUD text. Smooth downsampling of a 2x source is what keeps
+   these crisp. Only use `pixelated` where an image is scaled UP. */
+
+/* Controls are JS-driven — without JS the rail is still swipe/scrollable */
+.rail-bar { display: none; }
+.gallery.is-ready .rail-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.rail-nav {
+  width: 46px; height: 40px;
+  display: grid; place-items: center;
+  background: var(--ink);
+  color: var(--sand);
+  border: 3px solid var(--ink);
+  font-size: 13px;
+  cursor: pointer;
+}
+.rail-nav:hover:not(:disabled) { background: var(--grass); color: #fff; }
+.rail-nav:disabled { opacity: .3; cursor: default; }
+.rail-nav:focus-visible { outline: 3px solid var(--grass); outline-offset: 3px; }
+
+.rail-dots { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.dot {
+  width: 13px; height: 13px;
+  padding: 0;
+  background: transparent;
+  border: 2px solid var(--ink);
+  cursor: pointer;
+}
+.dot[aria-selected="true"] { background: var(--ink); }
+.dot:focus-visible { outline: 3px solid var(--grass); outline-offset: 3px; }
+
+.rail-count {
+  font-family: var(--pixel);
+  font-size: 10px;
+  min-width: 68px;
+  text-align: right;
+}
+
+@media (max-width: 560px) {
+  .rail-count { display: none; }
+  .gallery.is-ready .rail-bar { gap: 12px; }
 }
 
 /* ── Lightbox ─────────────────────────────── */
@@ -261,7 +319,6 @@ a { color: var(--ink); }
   max-width: 100%;
   max-height: 90vh;
   width: auto;
-  image-rendering: pixelated;
   border: 3px solid var(--sand);
 }
 .lightbox-close {
