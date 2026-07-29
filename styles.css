@@ -205,6 +205,7 @@ a { color: var(--ink); }
   font-size: clamp(10px, 1.6vw, 14px);
   letter-spacing: 1px;
 }
+.video-soon a { color: var(--sand); }
 
 /* ── Specs list ───────────────────────────── */
 .specs { margin: 0; max-width: 720px; }
