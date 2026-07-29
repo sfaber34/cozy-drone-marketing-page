@@ -4,16 +4,32 @@ A one-page static site. No framework, no build step, no `node_modules`. Just
 `index.html`, `styles.css`, `main.js` and an `images/` folder.
 
 ```
-index.html          the whole page
-styles.css          all styling
-main.js             lightbox + click-to-load YouTube embed
+index.html          the landing page
+press.html          press kit (served at /press via cleanUrls)
+styles.css          all styling, both pages
+main.js             carousel + lightbox + click-to-load YouTube embed
+press.js            copy-to-clipboard buttons on /press
 images/
   logo.png          COZY ✈ DRONE wordmark (transparent PNG)
   social-card.png   og:image used for link previews
   favicon.png
-  screenshots/      01.png, 02.png, ...
-vercel.json         clean URLs + long cache on /images
+  screenshots/      01.png ... 10.png (2400×1350 originals)
+press-assets/       downloadable press files: renamed screenshots, logo,
+                    key art, 4 GIFs, trailer mp4, fact sheet .txt, and
+                    cozy-drone-press-kit.zip bundling everything but the mp4
+vercel.json         clean URLs + cache headers
 ```
+
+## Press assets — how they were made
+
+- GIFs: cut from `~/Documents/cozyDrone/cozyDroneSteamTrailer.mp4` with ffmpeg
+  (15 fps, 640px, palettegen). Re-cut with different timestamps if the trailer
+  changes.
+- `cozy-drone-trailer-1080p.mp4`: same source re-encoded (crf 19) — the raw
+  export is 147 MB, over Vercel's 100 MB file limit.
+- Key art PNGs are lossless recompressions of the Steam capsule exports.
+- After changing any asset, rebuild the zip:
+  `cd press-assets && zip -q cozy-drone-press-kit.zip cozy-drone-*.png cozy-drone-*.gif cozy-drone-fact-sheet.txt`
 
 ## Local preview
 
@@ -60,6 +76,9 @@ vercel --prod   # production
 - **Domain** — the `og:image`, `og:url` and `canonical` tags hardcode
   `https://cozydrone.com`. Update those three if the domain differs, otherwise
   link previews on Discord/Twitter/Slack will break.
+- **Press page fills** — `press.html` has two `[FILL:]` markers: the Squeeg
+  Studios bio and (commented out) social links. The price row says
+  "TBA — available to press on request"; change it if you'd rather publish it.
 
 ## Notes
 
