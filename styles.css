@@ -107,9 +107,10 @@ a { color: var(--ink); }
 .sky { position: absolute; inset: 0; pointer-events: none; }
 .plane {
   position: absolute;
-  width: 26px; height: 12px;
+  width: 12px; height: 26px;
+  /* nose points right, matching the drift direction */
   background: no-repeat center/contain
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 6' shape-rendering='crispEdges'%3E%3Cg fill='%23ffffff'%3E%3Crect x='6' y='0' width='1' height='6'/%3E%3Crect x='0' y='2' width='13' height='1'/%3E%3Crect x='2' y='4' width='4' height='1'/%3E%3C/g%3E%3C/svg%3E");
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 13' shape-rendering='crispEdges'%3E%3Cg fill='%23ffffff'%3E%3Crect x='0' y='6' width='6' height='1'/%3E%3Crect x='3' y='0' width='1' height='13'/%3E%3Crect x='1' y='4' width='1' height='5'/%3E%3C/g%3E%3C/svg%3E");
   opacity: .5;
   animation: drift linear infinite;
 }
