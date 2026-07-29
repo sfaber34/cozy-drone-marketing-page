@@ -98,9 +98,21 @@ a { color: var(--ink); }
 }
 
 .platforms {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   margin: 28px 0 0;
-  font-size: 14px;
+  font-size: 19px;
   color: var(--ink-soft);
+}
+/* Inline so it needs no network request and inherits the text colour */
+.os-icon {
+  width: 1.05em;
+  height: 1.05em;
+  fill: currentColor;
+  shape-rendering: crispEdges;   /* keeps the panes hard-edged like the rest of the art */
+  flex: none;
 }
 
 /* Drifting planes, straight out of the capsule art */
