@@ -12,7 +12,13 @@ press.js            copy-to-clipboard buttons on /press
 images/
   logo.png          COZY ✈ DRONE wordmark (transparent PNG)
   social-card.png   og:image used for link previews
-  favicon.png
+  favicon-192.png   the favicon both pages link to. Keep it square and a
+                    multiple of 48px — Google ignores other sizes and falls
+                    back to a generic globe in search results. Scale it with
+                    nearest-neighbour (`ffmpeg -vf scale=W:H:flags=neighbor`)
+                    so the pixel art stays hard-edged.
+  favicon.png       the old 64px version, unreferenced; kept only so any URL
+                    Google still has cached resolves instead of 404ing
   screenshots/      01.png ... 10.png (2400×1350 originals)
 press-assets/       downloadable press files: renamed screenshots, logo,
                     key art, 4 GIFs, trailer mp4, fact sheet .txt, and
@@ -77,8 +83,10 @@ vercel --prod   # production
   `https://cozydrone.com`. Update those three if the domain differs, otherwise
   link previews on Discord/Twitter/Slack will break.
 - **Press page fills** — `press.html` has two `[FILL:]` markers: the Squeeg
-  Studios bio and (commented out) social links. The price row says
-  "TBA — available to press on request"; change it if you'd rather publish it.
+  Studios bio and (commented out) social links.
+- **Fact sheet lives in two places** — the `<pre id="factsheet-text">` block in
+  `press.html` and `press-assets/cozy-drone-fact-sheet.txt`. Edit both, then
+  rebuild the zip (see above), then check the size in the download button label.
 
 ## Notes
 

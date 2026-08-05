@@ -100,10 +100,17 @@ a { color: var(--ink); }
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 10px;
   margin: 28px 0 0;
   font-size: 19px;
   color: var(--ink-soft);
+}
+/* Keeps the OS icon glued to its label when the row wraps */
+.platform-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
 }
 /* Inline so it needs no network request and inherits the text colour */
 .os-icon {
@@ -315,6 +322,16 @@ a { color: var(--ink); }
 @media (max-width: 560px) {
   .rail-count { display: none; }
   .gallery.is-ready .rail-bar { gap: 12px; }
+}
+
+/* The press header carries three items; side by side they wrap mid-phrase and
+   strand the separators, so stack them once the row gets tight. */
+@media (max-width: 560px) {
+  .platforms-meta {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .platforms-meta .sep { display: none; }
 }
 
 /* ── Lightbox ─────────────────────────────── */

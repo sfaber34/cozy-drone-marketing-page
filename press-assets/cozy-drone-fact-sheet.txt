@@ -3,9 +3,9 @@ COZY DRONE — FACT SHEET
 Title:            Cozy Drone
 Developer:        Squeeg Studios
 Publisher:        Squeeg Studios (self-published)
-Release date:     August 2026
+Release date:     August 18, 2026
 Platforms:        Windows (Steam)
-Price:            TBA — available to press on request
+Price:            $2.99 USD
 Genre:            Satirical "cozy" drone-warfare sandbox
 Length:           ~20 minutes
 Steam:            https://store.steampowered.com/app/4950510/Cozy_Drone/
