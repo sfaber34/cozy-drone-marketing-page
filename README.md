@@ -59,6 +59,13 @@ The repo is static, so Vercel needs no build configuration:
 
 Every push to `main` redeploys; pull requests get preview URLs.
 
+### Analytics
+
+Both pages load `/_vercel/insights/script.js`. That path only resolves once
+**Web Analytics is enabled** for the project in the Vercel dashboard
+(Project → Analytics → Enable) — the script tag alone records nothing. It
+404s during local preview, which is expected and harmless.
+
 Or from the terminal:
 
 ```sh
